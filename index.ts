@@ -1,2 +1,2 @@
-import { execute } from "./day2";
+import { execute } from "./day3";
 execute();
