@@ -10,42 +10,16 @@ function match(s1: string, s2: string) {
 
   return duplicateCharacter;
 }
+const charScore = (char: string): number =>
+  char.charCodeAt(0) - (char.match(/[a-z]/) ? 96 : 38);
+
 function getValue(s: string) {
   let sum = 0;
   const characters = s.split("");
-  for (let i = 0; i < characters.length; i++) {
-    const c = characters[i].toLowerCase();
-    if (c == "a") sum += 1;
-    else if (c == "b") sum += 2;
-    else if (c == "c") sum += 3;
-    else if (c == "d") sum += 4;
-    else if (c == "e") sum += 5;
-    else if (c == "f") sum += 6;
-    else if (c == "g") sum += 7;
-    else if (c == "h") sum += 8;
-    else if (c == "i") sum += 9;
-    else if (c == "j") sum += 10;
-    else if (c == "k") sum += 11;
-    else if (c == "l") sum += 12;
-    else if (c == "m") sum += 13;
-    else if (c == "n") sum += 14;
-    else if (c == "o") sum += 15;
-    else if (c == "p") sum += 16;
-    else if (c == "q") sum += 17;
-    else if (c == "r") sum += 18;
-    else if (c == "s") sum += 19;
-    else if (c == "t") sum += 20;
-    else if (c == "u") sum += 21;
-    else if (c == "v") sum += 22;
-    else if (c == "w") sum += 23;
-    else if (c == "x") sum += 24;
-    else if (c == "y") sum += 25;
-    else if (c == "z") sum += 26;
-
-    if (c != characters[i]) sum += 26;
-  }
+  for (let i = 0; i < characters.length; i++) sum += charScore(characters[i]);
   return sum;
 }
+
 export function execute() {
   console.log(colors.green("Read input for") + ` day ${daynumber}`.yellow);
   const input = file.split("\r\n");
