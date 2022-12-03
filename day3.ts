@@ -4,13 +4,10 @@ import { daynumber } from "./constants";
 
 function match(s1: string, s2: string) {
   let duplicateCharacter = "";
-  for (let i = 0; i < s1.length; i += 1) {
-    if (duplicateCharacter.indexOf(s1[i]) === -1) {
-      if (s2.indexOf(s1[i]) !== -1) {
-        duplicateCharacter += s1[i];
-      }
-    }
-  }
+  for (let i = 0; i < s1.length; i += 1)
+    if (duplicateCharacter.indexOf(s1[i]) === -1)
+      if (s2.indexOf(s1[i]) !== -1) duplicateCharacter += s1[i];
+
   return duplicateCharacter;
 }
 function getValue(s: string) {
@@ -59,16 +56,18 @@ export function execute() {
     const partTwo = s.slice(s.length / 2, s.length);
     common += match(partOne, partTwo);
   }
-  console.log("The solution #1 is ".green + ` ${getValue(common)} points`.yellow);
+  console.log(
+    "The solution #1 is ".green + ` ${getValue(common)} points`.yellow
+  );
 
-  common ="";
-  for (let i = 0; i < input.length; i=i+3) {
+  common = "";
+  for (let i = 0; i < input.length; i = i + 3) {
     const s = input[i];
-    const s1 = input[i+1];
-    const s2 =input[i+2];
-    common += match(s, match(s1,s2));
+    const s1 = input[i + 1];
+    const s2 = input[i + 2];
+    common += match(s, match(s1, s2));
   }
-  console.log("The solution #2 is ".green + ` ${getValue(common)} points`.yellow);
-  
-
+  console.log(
+    "The solution #2 is ".green + ` ${getValue(common)} points`.yellow
+  );
 }
